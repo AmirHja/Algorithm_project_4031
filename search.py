@@ -27,8 +27,8 @@ def hash_search(username: str):
     start = timeit.default_timer()
     for seed in range(1, 7+1):
         if BLOOM_FILTER[hash_function(username.strip(), seed)] == 0:
-            return False, (timeit.default_timer() - start)*1000
-    return True, (timeit.default_timer() - start)*1000
+            return False, timeit.default_timer() - start
+    return True, timeit.default_timer() - start
 
 def binary_search(username: str):  # Amirreza Beik 40116103
 
@@ -42,7 +42,7 @@ def binary_search(username: str):  # Amirreza Beik 40116103
         value = DATABASE[mid]
 
         if value.strip() == username:
-            return True, (timeit.default_timer() - start)*1000
+            return True, timeit.default_timer() - start
         
         if value.strip() < username:
             low = mid + 1
@@ -52,7 +52,7 @@ def binary_search(username: str):  # Amirreza Beik 40116103
             high = mid - 1
             continue
                 
-    return False, (timeit.default_timer() - start)*1000
+    return False, timeit.default_timer() - start
 
 
 def get_all_searches(username: str):
