@@ -30,11 +30,36 @@ def hash_search(username: str):
             return False, (timeit.default_timer() - start)*1000
     return True, (timeit.default_timer() - start)*1000
 
+def binary_search(username: str):  # Amirreza Beik 40116103
+
+    start = timeit.default_timer()
+    end = None
+    low = 0 
+    high = DATABASE_SIZE
+
+    while low <= high:
+        mid = (low + high) // 2
+        value = DATABASE[mid]
+
+        if value.strip() == username:
+            return True, (timeit.default_timer() - start)*1000
+        
+        if value.strip() < username:
+            low = mid + 1
+            continue
+
+        else:
+            high = mid - 1
+            continue
+                
+    return False, (timeit.default_timer() - start)*1000
 
 
 def get_all_searches(username: str):
     print("linear search:", linear_search(username))
     print("hash search:", hash_search(username))
+    print("binary search:", binary_search(username))
+
 
 PATH = "usernames.txt"
 DATABASE = list(open(PATH, 'r'))
