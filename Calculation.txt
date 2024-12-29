@@ -1,2 +1,11 @@
-bloom filter size = -((Database size) * ln( percentage of error)) / (ln(2)**2) = 4_789_656
-hash functions number = (bloom filter size * ln(2)) / Database size = 6.67 ~ 7
+percentage of error = 0.5%
+Database size = 403355
+
+bloom filter size = -((Database size) * ln( percentage of error)) / (ln(2)**2)
+= -((403355 * ln(0.005)) / ln(2)**2) ~ 4_448_100
+
+
+
+
+hash functions number = (bloom filter size * ln(2)) / Database size =
+= (4_448_100 * ln(2)) / 403355 = 7.64 ~ 8
